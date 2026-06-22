@@ -2,50 +2,14 @@ NAME = phonebook
 
 OUTPUT_DIR = build
 
-OUT_DIRS := $(OUTPUT_DIR)/
+SRC_DIR = src
 
-SRC = phonebook.cpp
+OUT_DIRS := $(OUTPUT_DIR)/$(SRC_DIR)
 
-INCLUDES = ./
+SRC = $(SRC_DIR)/main.cpp		\
+	  $(SRC_DIR)/phonebook.cpp	\
+	  $(SRC_DIR)/contact.cpp
 
-CXX := c++
+INCLUDES = includes
 
-ifdef SANIT
-	DEBUG=1
-endif
-ifdef DEBUG
-	CFLAGS += -g -Wall -Wextra -std=c++98
-else
-	CFLAGS := -Wall -Wextra -Werror -std=c++98
-endif
-ifdef SANIT
-	CFLAGS += -fsanitize=address -fsanitize=leak -MMD -MP
-endif
-
-OBJ = $(SRC:%.cpp=$(OUTPUT_DIR)/%.o)
-
-$(NAME): $(OUT_DIRS) $(OBJ)
-	@$(CXX) $(OBJ) $(CFLAGS) -I$(INCLUDES) $(LFLAGS) -o $@
-	@echo "COMPILATION"
-
-$(OUTPUT_DIR)/%.o: %.cpp
-	@$(CXX) $(CFLAGS) -I$(INCLUDES) $(LFLAGS) -c $< -o $@
-	@echo -e "$< to $@\n"
-
-$(OUT_DIRS):
-	@mkdir -p $(OUT_DIRS)
-
-all: $(NAME)
-
-clean:
-	@rm -rf $(OUTPUT_DIR)
-	@echo "CLEAN"
-
-fclean: clean
-	@rm -f $(NAME)
-	@echo "FCLEAN"
-
-re: fclean all
-
-.PHONY: clean all re fclean
-
+include src/Makefile
