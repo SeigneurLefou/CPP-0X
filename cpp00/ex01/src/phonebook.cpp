@@ -17,17 +17,31 @@ void	Phonebook::_showHeader() {
 	std::cout << "Nick Name" << std::endl;
 }
 
+static std::string	promptInfo(std::string message)
+{
+	std::string	info;
+
+	while (!info.length())
+	{
+		std::cout << "Enter " << message << " : ";
+		std::getline(std::cin, info);
+	}
+	return (info);
+}
+
 void	Phonebook::_add() {
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string darkest_secret;
+	std::string first_name = promptInfo("first name");
+	std::string last_name = promptInfo("last name");
+	std::string nickname = promptInfo("nickname");
+	std::string phone_number = promptInfo("phone number");
+	std::string darkest_secret = promptInfo("dark secret");
 
 	contacts[_actual_new_index % 8].setContact(
 		_actual_new_index,
 		first_name,
 		last_name,
 		nickname,
+		phone_number,
 		darkest_secret
 	);
 	_actual_new_index++;
@@ -44,17 +58,17 @@ void	Phonebook::prompt() {
 	bool		is_running = true;
 	std::string	action;
 
-	action = "EXIT";
 	while (is_running)
 	{
+		std::cout << "Enter command" << std::endl;
+		std::getline(std::cin, action);
 		if (action == "ADD")
 			_add();
 		else if (action == "SEARCH")
 			_search();
 		else if (action == "EXIT")
-		{
-			std::cout << "Exit" << std::endl;
 			is_running = false;
-		}
+		else
+			std::cout << "Invalid command. Use ADD, SEARCH or EXIT" << std::endl;
 	}
 }
