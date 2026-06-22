@@ -18,7 +18,7 @@ $(NAME): $(OUT_DIRS) $(OBJ)
 	@$(CC) $(OBJ) $(CFLAGS) -I$(INCLUDES) $(LFLAGS) -o $@
 	@echo "COMPILATION"
 
-$(OUTPUT_DIR)/%.o: %.c
+$(OUTPUT_DIR)/%.o: %.cpp
 	@$(CC) $(CFLAGS) -I$(INCLUDES) $(LFLAGS) -c $< -o $@
 	@echo -e "$< to $@\n"
 

@@ -1,14 +1,12 @@
-NAME =
+NAME = phonebook
 
 OUTPUT_DIR = build
 
-SRC_DIR = 
+OUT_DIRS := $(OUTPUT_DIR)/
 
-OUT_DIRS := $(OUTPUT_DIR)/$(SRC_DIR)
+SRC = phonebook.cpp
 
-SRC =
-
-INCLUDES = includes
+INCLUDES = ./
 
 CXX := c++
 
@@ -30,7 +28,7 @@ $(NAME): $(OUT_DIRS) $(OBJ)
 	@$(CXX) $(OBJ) $(CFLAGS) -I$(INCLUDES) $(LFLAGS) -o $@
 	@echo "COMPILATION"
 
-$(OUTPUT_DIR)/%.o: %.cc
+$(OUTPUT_DIR)/%.o: %.cpp
 	@$(CXX) $(CFLAGS) -I$(INCLUDES) $(LFLAGS) -c $< -o $@
 	@echo -e "$< to $@\n"
 
