@@ -1,6 +1,5 @@
 mkdir -p $1
-cd $1
-mkdir -p src
-mkdir -p includes
-cp ~/42-home/CPP-0X/Makefile ./
-cp ~/42-home/CPP-0X/src-Makefile ./src/Makefile
+mkdir -p $1/src
+mkdir -p $1/includes
+cp $(pwd)/Makefile $1
+cp $(pwd)/src-Makefile $1/src/Makefile

@@ -30,13 +30,20 @@ ClapTrap::ClapTrap( std::string name, unsigned int hp, unsigned int en, unsigned
 ClapTrap::ClapTrap(const ClapTrap &other) {
 
     std::cout << "ClapTrap copied" << std::endl;
+	
     *this = other;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other) {
 
     std::cout << "ClapTraps assigned" << std::endl;
-    return *this;
+	if (this == &other) {
+	    other._name = this->_name;
+	    other._hit_points = this->_hit_points;
+	    other._energy = this->_energy;
+	    other._damage = this->_damage;
+	}
+	return *this;
 }
 
 ClapTrap::~ClapTrap() {

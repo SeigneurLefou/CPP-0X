@@ -1,21 +1,18 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap( void ) {
+ScavTrap::ScavTrap( void ) : ClapTrap("nameless", 100, 50, 20) {
 
     std::cout << "ScavTrap constructed without name" << std::endl;
-	ClapTrap("nameless", 100, 50, 20);
 }
 
-ScavTrap::ScavTrap( std::string name ) {
+ScavTrap::ScavTrap( std::string name ) : ClapTrap(name, 100, 50, 20) {
 
     std::cout << "ScavTrap constructed" << std::endl;
-	ClapTrap(name, 100, 50, 20);
 }
 
-ScavTrap::ScavTrap( std::string name, unsigned int hp, unsigned int en, unsigned int dam ) {
+ScavTrap::ScavTrap( std::string name, unsigned int hp, unsigned int en, unsigned int dam ) : ClapTrap(name, hp, en, dam){
 
     std::cout << "ScavTrap constructed" << std::endl;
-	ClapTrap(name, hp, en, dam);
 }
 
 ScavTrap::ScavTrap() {
