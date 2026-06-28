@@ -1,4 +1,4 @@
-NAME =
+NAME = trap
 
 OUTPUT_DIR = build
 
@@ -8,6 +8,7 @@ OUT_DIRS := $(OUTPUT_DIR)/$(SRC_DIR)
 
 SRC = $(SRC_DIR)/ClapTrap.cpp	\
 	  $(SRC_DIR)/ScavTrap.cpp	\
+	  $(SRC_DIR)/FragTrap.cpp	\
 	  $(SRC_DIR)/main.cpp
 
 INCLUDES = includes

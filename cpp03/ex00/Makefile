@@ -1,4 +1,4 @@
-NAME =
+NAME = trap
 
 OUTPUT_DIR = build
 
