@@ -1,11 +1,12 @@
 #include "Cat.hpp"
 
-Cat::Cat( void ) : Animal( "Cat" ) {
+Cat::Cat( void ) : AAnimal( "Cat" ) {
 
+	this->brain = new Brain;
     std::cout << "Cat constructed" << std::endl;
 }
 
-Cat::Cat( const Cat &other ) : Animal( other ) {
+Cat::Cat( const Cat &other ) : AAnimal( other ) {
 
     std::cout << "Cat copied" << std::endl;
 
@@ -18,7 +19,8 @@ Cat &Cat::operator=( const Cat &other ) {
 
 	if (this == &other) {
 
-		Animal::operator=(other);
+		AAnimal::operator=(other);
+		this->brain = other.brain;
 	}
 
     return *this;

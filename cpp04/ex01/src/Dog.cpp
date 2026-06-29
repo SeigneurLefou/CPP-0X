@@ -2,6 +2,7 @@
 
 Dog::Dog() : Animal("Dog") {
 
+	this->brain = new Brain;
     std::cout << "Dog constructed" << std::endl;
 }
 
@@ -17,6 +18,7 @@ Dog &Dog::operator=( const Dog &other ) {
 	if (this == &other) {
 
 		Animal::operator=(other);
+		this->brain = other.brain;
 	}
 
     return *this;
@@ -24,6 +26,7 @@ Dog &Dog::operator=( const Dog &other ) {
 
 Dog::~Dog() {
 
+	delete this->brain;
     std::cout << "Dog destroyed" << std::endl;
 }
 

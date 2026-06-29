@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lchamard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/29 13:19:58 by lchamard          #+#    #+#             */
-/*   Updated: 2026/06/29 13:19:59 by lchamard         ###   ########.fr       */
+/*   Created: 2026/06/29 14:41:29 by lchamard          #+#    #+#             */
+/*   Updated: 2026/06/29 14:41:30 by lchamard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-int	main() {
-	Phonebook	my_phonebook(10);
-	my_phonebook.prompt();
+#include <iostream>
+#include "WrongAnimal.hpp"
 
-	return (0);
-}
+class WrongCat : public WrongAnimal {
+
+public:
+	WrongCat();
+	WrongCat(const WrongCat &other);
+	WrongCat &operator=(const WrongCat &other);
+	~WrongCat();
+	void	makeSound( void ) const;
+};
+
+#endif // WRONGCAT_HPP
