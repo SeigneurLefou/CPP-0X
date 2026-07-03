@@ -1,4 +1,4 @@
-CXX := g++
+CXX := c++
 
 ifdef SANIT
 	DEBUG=1

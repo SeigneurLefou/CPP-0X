@@ -6,7 +6,7 @@
 /*   By: lchamard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 13:20:06 by lchamard          #+#    #+#             */
-/*   Updated: 2026/06/29 13:20:06 by lchamard         ###   ########.fr       */
+/*   Updated: 2026/07/02 13:47:54 by lchamard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ std::string Contact::_cropString(std::string old_str, size_t max_length) {
     return std::string(max_length - old_str.length(), ' ') + old_str;
 }
 
-void	Contact::showContact(int index, int max_length) {
+void	Contact::showTableContact(int index, int max_length) {
 	std::cout.fill(' ');
 	std::cout.width(max_length);
 	std::cout << index << "|";
@@ -49,4 +49,12 @@ void	Contact::showContact(int index, int max_length) {
 	std::cout << _cropString(this->_last_name, max_length) << "|";
 	std::cout.width(max_length);
 	std::cout << _cropString(this->_nickname, max_length) << std::endl;
+}
+
+void	Contact::showContact() {
+	std::cout << "firstname : " << this->_first_name << std::endl;
+	std::cout << "lastname : " << this->_last_name << std::endl;
+	std::cout << "nickname : " << this->_nickname << std::endl;
+	std::cout << "number : " << this->_phone_number << std::endl;
+	std::cout << "darkest secret : " << this->_darkest_secret << std::endl;
 }

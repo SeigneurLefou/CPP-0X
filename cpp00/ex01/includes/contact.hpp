@@ -9,7 +9,8 @@ class Contact
 	public:
 		bool			is_empty;
 		Contact();
-		void			showContact(int index, int max_length);	
+		void			showTableContact(int index, int max_length);	
+		void			showContact();	
 		void			setContact(int id,
 				std::string first_name,
 				std::string last_name,

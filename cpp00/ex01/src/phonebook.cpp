@@ -6,11 +6,26 @@
 /*   By: lchamard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 13:20:13 by lchamard          #+#    #+#             */
-/*   Updated: 2026/06/29 13:20:13 by lchamard         ###   ########.fr       */
+/*   Updated: 2026/07/03 12:56:29 by lchamard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
+
+bool	str_in_chr_of_str(std::string chr_list, std::string str) {
+	bool	ret_value;
+
+	for (size_t i = 0; i < str.length(); ++i) {
+		ret_value = false;
+		for (size_t j = 0; j < chr_list.length(); ++j) {
+			if (str[i] == chr_list[j])
+				ret_value = true;
+		}
+		if (!ret_value)
+			return (ret_value);
+	}
+	return (ret_value);
+}
 
 Phonebook::Phonebook(int max_length) {
 	_max_length = max_length;
@@ -60,10 +75,30 @@ void	Phonebook::_add() {
 }
 
 void	Phonebook::_search() {
+	std::string	str_id;
+	int			id;
+
+	if (contacts[0].is_empty)
+	{
+		std::cerr << "phonebook is empty" << std::endl;
+		return ;
+	}
 	_showHeader();
 	for (int i = 0; i < 8; i++)
 		if (!contacts[i].is_empty)
-			contacts[i].showContact(i, _max_length);
+			contacts[i].showTableContact(i, _max_length);
+	str_id = promptInfo("contact id");
+	if (!str_in_chr_of_str("0123456789", str_id))
+	{
+		std::cerr << "invalid id" << std::endl;
+		return ;
+	}
+	id = atoi(str_id.c_str());
+	if (0 <= id && id < std::min(8, this->_actual_new_index)) {
+		this->contacts[id].showContact();
+	} else {
+		std::cerr << "invalid id" << std::endl;
+	}
 }
 
 void	Phonebook::prompt() {
@@ -72,7 +107,7 @@ void	Phonebook::prompt() {
 
 	while (is_running)
 	{
-		std::cout << "Enter command" << std::endl;
+		std::cout << "> ";
 		std::getline(std::cin, action);
 		if (action == "ADD")
 			_add();
