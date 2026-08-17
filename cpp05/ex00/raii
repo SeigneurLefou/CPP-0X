@@ -1,0 +1,49 @@
+NOTRE CODE
+
+struct RAII
+{
+	void *constructor(void *attribute);
+	void *destructor(void *attribute);
+}
+
+raii vec2
+{
+	int posx;
+	int posy;
+	char*	caca;
+	constructor(int x, int y, char *test)
+	{
+		caca = strdup(test);
+		posx = x;
+		posy = y;
+	}
+	destructor()
+	{
+		free(test);
+		write(1, "mon cul\n", 9);
+	}
+}
+
+int main()
+{
+	vec2 my_vec(6, 7, "test");	
+	vec2 my_vec = vec2(6, 7, "test");	
+}
+
+==============================================================================
+CODE C
+
+stuct vec2 {
+	int		posx;
+	int		posy;
+	void*	
+}
+vec2_constructor(struct vec2 *this, int x, int y)
+{
+	this->posx = x;
+	this->posy = y;
+}
+vec2_destructor(struct vec2 *this)
+{
+	write(1, "mon cul\n", 9);
+}
