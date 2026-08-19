@@ -6,6 +6,8 @@
 #include <string>
 #include "Form.hpp"
 
+class Form;
+
 class Bureaucrat {
 	public:
     	Bureaucrat(const std::string name, unsigned int grade);
@@ -19,19 +21,19 @@ class Bureaucrat {
 		void			decrementGrade();
 		void			signForm(Form &form);
 
+		class GradeTooLowException : public std::exception {
+			public:
+				const char* what() const throw();
+		};
+
+		class GradeTooHighException : public std::exception {
+			public:
+				const char* what() const throw();
+		};
+
 	private:
 		const std::string	_name;
 		unsigned int		_grade;
-
-	class GradeTooLowException : public std::exception {
-		public:
-			const char* what() const throw();
-	};
-
-	class GradeTooHighException : public std::exception {
-		public:
-			const char* what() const throw();
-	};
 };
 
 std::ostream	&operator<<(std::ostream &output, Bureaucrat const &bureaucrat);

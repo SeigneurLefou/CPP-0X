@@ -1,16 +1,16 @@
 #include "Form.hpp"
 
-Form::Form(name, grade_sign, grade_exec) : _is_signed(false), _grade_sign(grade_sign), _grade_exec(grade_exec) {
+Form::Form(std::string name, int grade_sign, int grade_exec) : _name(name), _is_signed(false) {
     std::cout << "Form constructed" << std::endl;
 	try {
-		this->setGradeSign(grade);
+		this->setGradeSign(grade_sign);
 	} catch (Form::GradeTooLowException &e) {
 		std::cout << "Grade sign given for " << this->getName() << " is " << e.what() << "." << std::endl;
 	} catch (Form::GradeTooHighException &e) {
 		std::cout << "Grade sign given for " << this->getName() << " is " << e.what() << "." << std::endl;
 	}
 	try {
-		this->setGradeExec(grade);
+		this->setGradeExec(grade_exec);
 	} catch (Form::GradeTooLowException &e) {
 		std::cout << "Grade execute given for " << this->getName() << " is " << e.what() << "." << std::endl;
 	} catch (Form::GradeTooHighException &e) {
@@ -79,28 +79,30 @@ void	Form::setGradeExec(int grade) {
 		this->_grade_exec = grade;
 }
 
-void	beSigned(Bureaucrat &bureaucrat) {
+void	Form::beSigned(Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() > this->_grade_sign)
 		throw Form::GradeTooLowException();
 	else
 		this->_is_signed = true;
 }
 
-const char	*Form::GradeTooLowException::what() const throw()
-{
+const char	*Form::GradeTooLowException::what() const throw() {
 	return ("too low");
 }
 
-const char	*Form::GradeTooHighException::what() const throw()
-{
+const char	*Form::GradeTooHighException::what() const throw() {
 	return ("too high");
 }
 
 std::ostream	&operator<<(std::ostream &output, Form const &form) {
-
-	output	<< bureaucrat.getName()
-			<< ", bureaucrat grade "
-			<< bureaucrat.getGrade()
+	std::string	is_signed_sentence = (form.getIsSigned()) ? "is signed" : "isn't signed";
+	output	<< form.getName()
+			<< ", formulary need "
+			<< form.getGradeSign()
+			<< " grade to sign and need "
+			<< form.getGradeExec()
+			<< " grade to execute and he "
+			<< is_signed_sentence
 			<< "." << std::endl;
 	return (output);
 }
