@@ -6,8 +6,9 @@ SRC_DIR = src
 
 OUT_DIRS := $(OUTPUT_DIR)/$(SRC_DIR)
 
-SRC = $(SRC_DIR)/Bureaucrat.cpp	\
-	  $(SRC_DIR)/AForm.cpp		\
+SRC = $(SRC_DIR)/Bureaucrat.cpp				\
+	  $(SRC_DIR)/AForm.cpp					\
+	  $(SRC_DIR)/ShrubberyCreationForm.cpp	\
 	  $(SRC_DIR)/main.cpp
 
 INCLUDES = includes
