@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "Intern.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -7,6 +8,7 @@
 int	main()
 {
 	std::srand(time(0));
+	Intern		random_slave;
 	Bureaucrat	patron_a("F0xer", 146);
 	Bureaucrat	camarade_a("Mewen", 7);
 	Bureaucrat	bebe_a("Yannis", 138);
@@ -16,9 +18,20 @@ int	main()
 	Bureaucrat	patron_c("F0xer", 26);
 	Bureaucrat	camarade_c("Mewen", 1);
 	Bureaucrat	bebe_c("Yannis", 6);
-	AForm		*form_a = new ShrubberyCreationForm("arbre");
-	AForm		*form_b = new RobotomyRequestForm("robot");
-	AForm		*form_c = new PresidentialPardonForm("president");
+	AForm		*form_a = random_slave.makeForm("shrubbery creation", "arbre");
+	AForm		*form_b = random_slave.makeForm("robotomy request", "robot");
+	AForm		*form_c = random_slave.makeForm("presidential pardon", "president");
+
+	if (!form_a || !form_b || !form_c)
+	{
+		if (form_a)
+			delete form_a;
+		if (form_b)
+			delete form_b;
+		if (form_c)
+			delete form_c;
+		return (1);
+	}
 
 	std::cout << std::endl;
 
